@@ -21,8 +21,6 @@ const textureNormal = textureLoader.load("/textures/normal_map_earth.jpeg");
 const texture = textureLoader.load("/textures/earth.jpg");
 
 const material = new THREE.MeshStandardMaterial();
-// material.metalness = 0;
-// material.roughness = 1;
 material.normalMap = textureNormal;
 material.map = texture;
 
@@ -31,7 +29,6 @@ const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
 // Lights
-
 const mainDirectional = new THREE.DirectionalLight(0xffffff, 1.5);
 mainDirectional.position.x = 10;
 mainDirectional.position.y = 5;
@@ -42,9 +39,7 @@ const secDirectional = new THREE.DirectionalLight(0xffffff, 0.1);
 secDirectional.position.set(-10, -3, 10);
 scene.add(secDirectional);
 
-/**
- * Sizes
- */
+// Sizes
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
@@ -64,9 +59,7 @@ window.addEventListener("resize", () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
-/**
- * Camera
- */
+// Camera
 // Base camera
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -83,9 +76,7 @@ scene.add(camera);
 // const controls = new OrbitControls(camera, canvas)
 // controls.enableDamping = true
 
-/**
- * Renderer
- */
+// Render
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   alpha: true,
@@ -94,10 +85,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-/**
- * Animate
- */
-
+// Animate
 const clock = new THREE.Clock();
 
 const tick = () => {

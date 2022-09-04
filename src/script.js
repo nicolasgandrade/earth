@@ -13,7 +13,7 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 // Objects
-const geometry = new THREE.SphereGeometry(0.5, 64, 64);
+const geometry = new THREE.SphereGeometry(0.7, 64, 64);
 
 // Materials
 const textureLoader = new THREE.TextureLoader();
@@ -106,8 +106,10 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 // Scroll
 const paralax = (event) => {
-  sphere.position.y = window.scrollY * 0.003;
-  sphere.position.z = window.scrollY * 0.005;
+  //   sphere.position.y = window.scrollY * 0.003;
+  //   sphere.position.z = window.scrollY * 0.005;
+
+  camera.position.z = 2 + window.scrollY * 0.005;
 };
 
 window.addEventListener("scroll", paralax);

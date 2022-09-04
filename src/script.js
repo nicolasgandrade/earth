@@ -48,7 +48,7 @@ const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
 // Lights
-const mainDirectional = new THREE.DirectionalLight(0xffffff, 1.5);
+const mainDirectional = new THREE.DirectionalLight(0xffffff, 2);
 mainDirectional.position.x = 10;
 mainDirectional.position.y = 5;
 mainDirectional.position.z = 0;
@@ -103,6 +103,14 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+// Scroll
+const paralax = (event) => {
+  sphere.position.y = window.scrollY * 0.003;
+  sphere.position.z = window.scrollY * 0.005;
+};
+
+window.addEventListener("scroll", paralax);
 
 // Animate
 const clock = new THREE.Clock();

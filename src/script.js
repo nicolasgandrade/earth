@@ -24,6 +24,25 @@ const material = new THREE.MeshStandardMaterial();
 material.normalMap = textureNormal;
 material.map = texture;
 
+// Stars
+function addStar() {
+  const geometry = new THREE.SphereGeometry(0.05, 24, 24);
+  const material = new THREE.MeshStandardMaterial();
+  material.emissive = new THREE.Color(0xffffff);
+  const star = new THREE.Mesh(geometry, material);
+
+  const [x, y, z] = Array(3)
+    .fill()
+    .map(() => THREE.MathUtils.randFloatSpread(100));
+
+  star.position.set(x, y, z);
+  scene.add(star);
+}
+
+Array(500)
+  .fill()
+  .forEach(() => addStar());
+
 // Mesh
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
